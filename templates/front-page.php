@@ -14,35 +14,24 @@
 
         <hr>
 
+        <?php foreach($topics as $topic) : ?>
+
         <div class="card flex-md-row mt-3 mb-4 box-shadow h-md-250">
             <div class="card-body d-flex flex-column align-items-start">
-                <strong class="d-inline-block mb-2 text-info">World</strong>
+                <strong class="d-inline-block mb-2 text-info"><?php echo $topic->category_name; ?></strong>
                 <h3 class="mb-3">
-                    <a class="text-dark" href="<?php echo BASE_URI; ?>topic.php">Featured post</a>
+                    <a class="text-dark" href="<?php echo BASE_URI; ?>topic.php?id=<?php echo $topic->id; ?>"><?php echo $topic->title; ?></a>
                 </h3>
-                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
+                <p class="card-text mb-auto"><?php echo getExcerpt($topic->description); ?></p>
             </div>
-            <div class="card-img-right flex-auto d-none px-2 d-md-block bg-light" style="width: 200px; height: 250px;">
+            <div class="card-img-right flex-auto d-none px-2 d-md-block bg-light" style="width: 200px; min-width:80px; height: 250px;">
                 <img src="./assets/img/faces/joe-gardner-2.jpg" class="img-circle img-no-padding img-responsive" alt="Rounded Image">
                 <div class="my-1 mx-auto text-muted">2014<i class="nc-icon nc-single-02 ml-1"></i></div>
                 <div class="mb-1 mx-auto text-muted">18:05 07-06-2018<i class="nc-icon nc-watch-time ml-1"></i></div>
             </div>
         </div>
 
-        <div class="card flex-md-row mb-4 box-shadow h-md-250">
-            <div class="card-body d-flex flex-column align-items-start">
-                <strong class="d-inline-block mb-2 text-info">World</strong>
-                <h3 class="mb-3">
-                    <a class="text-dark" href="<?php echo BASE_URI; ?>topic.php">Featured post</a>
-                </h3>
-                <p class="card-text mb-auto">This is a wider card with supporting text below as a natural lead-in to additional content.</p>
-            </div>
-            <div class="card-img-right flex-auto d-none px-2 d-md-block bg-light" style="width: 200px; height: 250px;">
-                <img src="./assets/img/faces/clem-onojeghuo-3.jpg" class="img-circle img-no-padding img-responsive" alt="Rounded Image">
-                <div class="my-1 mx-auto text-muted">2014<i class="nc-icon nc-single-02 ml-1"></i></div>
-                <div class="mb-1 mx-auto text-muted">18:05 07-06-2018<i class="nc-icon nc-watch-time ml-1"></i></div>
-            </div>
-        </div>
+        <?php endforeach; ?>
 
         <div class="row">
             <ul class="pagination mx-auto">
