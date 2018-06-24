@@ -20,8 +20,16 @@
 
         $category_id = $_GET['category'];
 
-        $template->topics = $topic->get_topics($category_id);
+        $template->topics = $topic->get_topics_per_category($category_id);
         $template->page_title = $topic->get_category_name($category_id)->category_name;
+
+    } else if(isset($_GET['user_id'])) {
+
+        $user_id = $_GET['user_id'];
+
+        $template->topics = $topic->get_topics_per_user($user_id);
+        $template->page_title = $topic->get_user_name($user_id)->full_name;
+
     } else {
 
         $template->topics = $topic->get_all_topics();

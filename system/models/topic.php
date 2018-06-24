@@ -14,13 +14,25 @@
            return $topics;
         }
 
-        public function get_topics($category_id)
+        public function get_topics_per_category($category_id)
         {
             $topics = $this->db->select("SELECT topics.id, topics.title, topics.description, topics.created_at, categories.category_name, 
                                         users.user_id, users.full_name, users.image FROM topics 
                                         INNER JOIN categories on topics.category_id = categories.category_id
                                         INNER JOIN users on topics.user_id = users.user_id
                                         WHERE categories.category_id = {$category_id}
+                                        ORDER BY created_at DESC")->get();
+
+            return $topics;
+        }
+  
+        public function get_topics_per_user($user_id)
+        {
+            $topics = $this->db->select("SELECT topics.id, topics.title, topics.description, topics.created_at, categories.category_name, 
+                                        users.user_id, users.full_name, users.image FROM topics 
+                                        INNER JOIN categories on topics.category_id = categories.category_id
+                                        INNER JOIN users on topics.user_id = users.user_id
+                                        WHERE users.user_id = {$user_id}
                                         ORDER BY created_at DESC")->get();
 
             return $topics;
@@ -58,6 +70,16 @@
             $category_name = $this->db->single();
 
             return $category_name;
+        }
+
+        public function get_user_name($user_id)
+        {
+            $this->db->query("SELECT full_name FROM users
+                            WHERE users.user_id = {$user_id}");
+
+            $username = $this->db->single();
+
+            return $username;
         }
 
     }
