@@ -9,7 +9,7 @@
     <div class="row">
         <div class="col-md-8 blog-main">
         <h3 class="mb-3 font-italic bg-light py-3 text-center">
-            Topics
+            <?php echo $page_title; ?>
         </h3>
 
         <hr>
@@ -23,11 +23,14 @@
                     <a class="text-dark" href="<?php echo BASE_URI; ?>topic.php?id=<?php echo $topic->id; ?>"><?php echo $topic->title; ?></a>
                 </h3>
                 <p class="card-text mb-auto"><?php echo getExcerpt($topic->description); ?></p>
+                <p class="pt-3"><?php echo formatDate($topic->created_at); ?><i class="nc-icon nc-watch-time ml-1 text-info"></i></p>
+                <p>Comments :<span class="badge badge-info text-white ml-3"><?php echo count_comments($topic->id); ?></span></p>
+                <p>Author : <strong><?php echo $topic->full_name; ?></strong></p>
             </div>
             <div class="card-img-right flex-auto d-none px-2 d-md-block bg-light" style="width: 200px; min-width:80px; height: 250px;">
-                <img src="./assets/img/faces/joe-gardner-2.jpg" class="img-circle img-no-padding img-responsive" alt="Rounded Image">
-                <div class="my-1 mx-auto text-muted">2014<i class="nc-icon nc-single-02 ml-1"></i></div>
-                <div class="mb-1 mx-auto text-muted">18:05 07-06-2018<i class="nc-icon nc-watch-time ml-1"></i></div>
+                <img src="./assets/img/faces/<?php echo $topic->image; ?>" class="img-circle img-no-padding img-responsive" alt="Rounded Image">
+                <a name="" id="" class="btn btn-info d-block mt-2" href="#" role="button">Edit</a>
+                <a name="" id="" class="btn btn-danger d-block mt-2" href="#" role="button">Delete</a>
             </div>
         </div>
 

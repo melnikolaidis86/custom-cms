@@ -14,10 +14,24 @@
 
     //Set template variables
     $template->title = 'SAE FORUM';
-    $template->topics = $topic->get_all_topics();
-    $template->categories = $topic->get_all_categories();
+
+    //Checking to display posts if category id exists
+    if(isset($_GET['category'])) {
+
+        $category_id = $_GET['category'];
+
+        $template->topics = $topic->get_topics($category_id);
+        $template->page_title = $topic->get_category_name($category_id)->category_name;
+    } else {
+
+        $template->topics = $topic->get_all_topics();
+        $template->page_title = 'ALL TOPICS';
+    }
 
     //Displaying template
     echo $template;
+
+
+
 
 

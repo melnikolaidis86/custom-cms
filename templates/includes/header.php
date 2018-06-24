@@ -19,6 +19,8 @@
 	<link href="http://maxcdn.bootstrapcdn.com/font-awesome/latest/css/font-awesome.min.css" rel="stylesheet">
 	<link href="./assets/css/nucleo-icons.css" rel="stylesheet" />
 
+    <script src="./assets/js/ckeditor/ckeditor.js"/></script>
+
 </head>
 <body>
 
