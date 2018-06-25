@@ -7,17 +7,7 @@
                 <div class="col-lg-4 ml-auto mr-auto">
                     <div class="card card-register">
                         <!-- div to display the error message and the error message type -->
-                        <?php if(isset($_SESSION['message'])) : ?>
-
-                        <div class="alert alert-<?php echo $_SESSION['message_type']; ?> alert-dismissible fade show text-center" role="alert">
-
-                            <?php echo $_SESSION['message']; ?>
-
-                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                            <span aria-hidden="true">&times;</span>
-                            </button>
-                        </div>
-                        <?php endif; ?>
+                        <?php displayMessage(); ?>
                         <h3 class="title">Welcome</h3>
                         <form class="register-form" method="post" action="<?php echo BASE_URI . 'login.php'; ?>">
                             <label>Email</label>

@@ -6,28 +6,30 @@
         <div class="row">
             <div class="col-lg-4 ml-auto mr-auto">
                 <div class="card card-register">
+                <!-- div to display the error message and the error message type -->
+                <?php displayMessage(); ?>
                     <h3 class="title">Register</h3>
-                    <form enctype="multipart/form-data" class="register-form">
+                    <form enctype="multipart/form-data" method="post" action="<?php echo BASE_URI . 'register.php'; ?>" class="register-form">
 
                         <label>Full Name</label>
-                        <input type="text" class="form-control" placeholder="Full Name">
+                        <input type="text" name="full_name" class="form-control" placeholder="Full Name">
 
                         <label>Username</label>
-                        <input type="text" class="form-control" placeholder="Username">
+                        <input type="text" name="username" class="form-control" placeholder="Username">
 
                         <label>Email</label>
-                        <input type="email" class="form-control" placeholder="Email">
+                        <input type="email" name="email" class="form-control" placeholder="Email">
 
                         <label>Password</label>
-                        <input type="password" class="form-control" placeholder="Password">
+                        <input type="password" name="password" class="form-control" placeholder="Password">
 
                         <label>Confirm Password</label>
-                        <input type="password" class="form-control" placeholder="Confirm Password">
+                        <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password">
 
                         <label>Upload Avatar</label>
-                        <input type="file" size="32" name="image_field" value="">
+                        <input type="file" size="32" name="avatar" value="">
 
-                        <button class="btn btn-danger btn-block btn-round">Register</button>
+                        <button type="submit" name="register" class="btn btn-danger btn-block btn-round">Register</button>
                     </form>
                 </div>
             </div>

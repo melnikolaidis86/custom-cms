@@ -15,7 +15,10 @@
     {
         $connection = (new MySQLiClient(DB_HOST, DB_NAME, DB_USER, DB_PASSWORD))->connect();
 
-        $categories = $connection->select('SELECT * FROM categories')->get();
+        $categories = $connection->select("SELECT categories.*, count(topics.id) as topics_count FROM categories 
+                                        LEFT JOIN topics ON topics.category_id = categories.category_id
+                                        GROUP BY category_id
+                                        ORDER BY topics_count DESC")->get();
 
         return $categories;
     }

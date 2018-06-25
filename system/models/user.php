@@ -36,6 +36,7 @@
 
         }
 
+        //Authentication method for log in
         public function authenticate_user($username, $password) 
         {
             $this->db->query("SELECT users.user_id, users.username, users.email, users.password FROM users
@@ -51,5 +52,61 @@
                 return false;
             }
     
+        }
+
+        //Register method for new user registration
+        public function register($data) {
+
+            //Insert Query
+            $this->db->query("INSERT INTO users (full_name, username, email, password, image)
+                                VALUES (:full_name, :username, :email, :password, :image)");
+
+            //Bind Values
+            $this->db->bind(':full_name', $data['full_name']);
+            $this->db->bind(':username', $data['username']);
+            $this->db->bind(':email', $data['email']);
+            $this->db->bind(':password', $data['password']);
+            $this->db->bind(':image', $data['avatar']);
+
+            //Execute
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+
+        //Upload Avatar Method
+        public function uploadAvatar()
+        {
+            $allowedExts = array('gif', 'jpeg', 'jpg', 'png');
+            $temp = explode('.', $_FILES['avatar']['name']);
+            $extension = end($temp);
+
+            if((($_FILES['avatar']['type'] == 'image/gif')
+                    || ($_FILES['avatar']['type'] == 'image/jpeg')
+                    || ($_FILES['avatar']['type'] == 'image/jpg')
+                    || ($_FILES['avatar']['type'] == 'image/pjpeg')
+                    || ($_FILES['avatar']['type'] == 'image/x-png')
+                    || ($_FILES['avatar']['type'] == 'image/png'))
+                    && ($_FILES['avatar']['size'] < 50000)
+                    && in_array($extension, $allowedExts)) {
+
+                    if($_FILES['avatar']['error'] > 0) {
+                        redirect('./register.php', $_FILES['avatar']['error'], 'error');
+                    } else {
+                        if(file_exists('./assets/img/faces/' . $_FILES['avatar']['name'])) {
+                            redirect('./register.php', 'File already exists', 'error');
+                        } else {
+                            move_uploaded_file($_FILES['avatar']['tmp_name'], './assets/img/faces/' . $_FILES['avatar']['name']);
+
+                            return true;
+                        }
+                    }
+                        
+                } else {
+                    redirect('./register.php', 'Invalid File Type', 'error');
+                }
         }
     }

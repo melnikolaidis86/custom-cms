@@ -22,14 +22,12 @@
 
         if($user_id) {
 
-            session_unset();
-
             $_SESSION['user_id'] = $user_id;
 
             redirect(BASE_URI);
         } else {
 
-            redirect(BASE_URI . 'login.php', 'Username or password does not belong to valid user. Please check your credentials' , 'danger');
+            redirect(BASE_URI . 'login.php', 'Username or password does not belong to valid user. Please check your credentials' , 'error');
 
         }
     
