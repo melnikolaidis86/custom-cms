@@ -49,7 +49,7 @@
 
             //Unset Message
             unset($_SESSION['message']);
-            unset($_SESSION['messate_type']);
+            unset($_SESSION['message_type']);
         } else {
 
             echo '';

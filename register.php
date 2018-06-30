@@ -16,7 +16,7 @@
         $data['full_name'] = $_POST['full_name'];
         $data['username'] = $_POST['username'];
         $data['email'] = $_POST['email'];
-        $data['password'] = password_hash($_POST['password'], PASSWORD_DEFAULT);
+        $data['password'] = $_POST['password'];
         $data['confirm_password'] = $_POST['confirm_password'];
 
         //Required fields

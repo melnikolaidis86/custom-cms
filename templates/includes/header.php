@@ -46,19 +46,19 @@
                     <?php if(isset($_SESSION['user_id'])) : ?>
 
                         <li class="nav-item">
-                            <a href="<?php echo BASE_URI; ?>login.php" class="btn btn-outline-info">New Topic</a>
+                            <a href="<?php echo BASE_URI; ?>create.php" class="btn btn-info">New Topic</a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo BASE_URI; ?>register.php" class="btn btn-outline-warning">Logout</a>
+                            <a href="<?php echo BASE_URI; ?>register.php" class="btn btn-warning">Logout</a>
                         </li>
 
                     <?php else : ?>
 
                         <li class="nav-item">
-                            <a href="<?php echo BASE_URI; ?>login.php" class="btn btn-outline-info">Log in</a>
+                            <a href="<?php echo BASE_URI; ?>login.php" class="btn btn-info">Log in</a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo BASE_URI; ?>register.php" class="btn btn-outline-warning">Register</a>
+                            <a href="<?php echo BASE_URI; ?>register.php" class="btn btn-warning">Register</a>
                         </li>
 
                     <?php endif; ?> 

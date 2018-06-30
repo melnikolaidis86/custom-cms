@@ -23,12 +23,12 @@
         $template->topics = $topic->get_topics_per_category($category_id);
         $template->page_title = $topic->get_category_name($category_id)->category_name;
 
-    } else if(isset($_GET['user_id'])) {
+    } else if(isset($_GET['user'])) {
 
-        $user_id = $_GET['user_id'];
-
-        $template->topics = $topic->get_topics_per_user($user_id);
-        $template->page_title = $topic->get_user_name($user_id)->full_name;
+        $user = urldecode($_GET['user']);
+        
+        $template->topics = $topic->get_topics_per_user($user);
+        $template->page_title = $user;
 
     } else {
 

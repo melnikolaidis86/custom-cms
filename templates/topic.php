@@ -67,16 +67,18 @@
         <?php endif; ?>
 
 
-        <h3 class="mb-3 font-italic bg-light py-3 text-center">
-            Leave a reply
-        </h3>
+        <?php if(isset($_SESSION['user_id'])) : ?>
+            <h3 class="mb-3 font-italic bg-light py-3 text-center">
+                Leave a reply
+            </h3>
 
-        <div class="form-group">
-            <textarea class="form-control" name="ckEditor" id="ckEditor" rows="10" cols="80"></textarea>
-        </div>
-        <div class="form-group">
-            <button class="btn btn-outline-warning my-3 d-block ml-auto">Submit your reply</button>
-        </div>
+            <div class="form-group">
+                <textarea class="form-control" name="ckEditor" id="ckEditor" rows="10" cols="80"></textarea>
+            </div>
+            <div class="form-group">
+                <button class="btn btn-outline-warning my-3 d-block ml-auto">Submit your reply</button>
+            </div>
+        <?php endif; ?>
 
         <script>
             // Replace the <textarea id="editor"> with a CKEditor
@@ -84,7 +86,7 @@
             CKEDITOR.replace( 'ckEditor' );
         </script>
 
-        <div class="row">
+        <!-- <div class="row">
             <ul class="pagination mx-auto">
                 <li class="page-item">
                     <a class="page-link" href="#" aria-label="Previous">
@@ -104,7 +106,7 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div> -->
     
         </div>
 

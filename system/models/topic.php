@@ -26,13 +26,13 @@
             return $topics;
         }
   
-        public function get_topics_per_user($user_id)
+        public function get_topics_per_user($user)
         {
             $topics = $this->db->select("SELECT topics.id, topics.title, topics.description, topics.created_at, categories.category_name, 
                                         users.user_id, users.full_name, users.image FROM topics 
                                         INNER JOIN categories on topics.category_id = categories.category_id
                                         INNER JOIN users on topics.user_id = users.user_id
-                                        WHERE users.user_id = {$user_id}
+                                        WHERE users.full_name = '{$user}'
                                         ORDER BY created_at DESC")->get();
 
             return $topics;
@@ -81,5 +81,42 @@
 
             return $username;
         }
+
+        public function create_new_topic($data) {
+
+            //Insert Query
+            $this->db->query("INSERT INTO topics (user_id, category_id, title, description) 
+                            VALUES (:user_id, :category_id, :title, :description)");
+
+            //Bind Values
+            $this->db->bind(':user_id', $data['user_id']);
+            $this->db->bind(':category_id', $data['category_id']);
+            $this->db->bind(':title', $data['title']);
+            $this->db->bind(':description', $data['description']);
+
+            //Execute
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+
+        public function create_new_category($category) {
+
+            //Insert Query
+            $this->db->query("INSERT INTO categories (category_name) VALUES (:category)");
+
+            //Bind Values
+            $this->db->bind(':category', $category);
+
+            //Execute
+            if($this->db->execute()) {
+                return $this->db->lastInsertId();
+            } else {
+                return false;
+            }
+        } 
 
     }

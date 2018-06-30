@@ -28,9 +28,9 @@
                     <p class="card-text mb-auto"><?php echo getExcerpt($topic->description); ?></p>
                     <p class="pt-3"><?php echo formatDate($topic->created_at); ?><i class="nc-icon nc-watch-time ml-1 text-info"></i></p>
                     <p>Comments :<span class="badge badge-info text-white ml-3"><?php echo count_comments($topic->id); ?></span></p>
-                    <p>Author : <strong><a href="<?php echo BASE_URI . '?user_id='. $topic->user_id; ?>"><?php echo $topic->full_name; ?></a></strong></p>
+                    <p>Author : <strong><a href="<?php echo BASE_URI . '?user='. urlencode($topic->full_name); ?>"><?php echo $topic->full_name; ?></a></strong></p>
                 </div>
-                <div class="card-img-right flex-auto d-none px-2 d-md-block bg-light" style="width: 200px; min-width:80px; height: 250px;">
+                <div class="card-img-right flex-auto px-2 d-block bg-light" style="width: 120px; height: 250px;">
                     <img src="./assets/img/faces/<?php echo $topic->image; ?>" class="img-circle img-no-padding img-responsive" alt="Rounded Image">
 
                     <?php if(isset($_SESSION['user_id']) && $topic->user_id == $_SESSION['user_id']) : ?>
@@ -50,7 +50,7 @@
 
         <?php endif; ?>
 
-        <div class="row">
+        <!-- <div class="row">
             <ul class="pagination mx-auto">
                 <li class="page-item">
                     <a class="page-link" href="#" aria-label="Previous">
@@ -70,7 +70,7 @@
                     </a>
                 </li>
             </ul>
-        </div>
+        </div> -->
         </div>
 
         <?php include './includes/sidebar.php'; ?>

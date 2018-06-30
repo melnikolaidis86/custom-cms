@@ -57,4 +57,7 @@
 
 <!--  Paper Kit Initialization snd functons -->
 <script src="./assets/js/paper-kit.js?v=2.1.0"></script>
+
+<!--  Custom javascript script -->
+<script src="./assets/js/_main.js"></script>
 </html>

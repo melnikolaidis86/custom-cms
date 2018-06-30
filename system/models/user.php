@@ -65,7 +65,7 @@
             $this->db->bind(':full_name', $data['full_name']);
             $this->db->bind(':username', $data['username']);
             $this->db->bind(':email', $data['email']);
-            $this->db->bind(':password', $data['password']);
+            $this->db->bind(':password', password_hash($data['password'], PASSWORD_DEFAULT));
             $this->db->bind(':image', $data['avatar']);
 
             //Execute
