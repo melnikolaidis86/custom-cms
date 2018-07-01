@@ -18,6 +18,40 @@ $("#selectCategory").change(function() {
     }
 });
 
+//Logout functionality
+$("#logout").click(function() {
+
+    var logout = true;
+
+    $.ajax({
+        url: "http://localhost/custom-cms/logout.php",
+        type: "post",
+        data: {logout : logout},
+        success: function() {
+
+            location.reload();
+        }
+    })
+});
+
+//Delete topic functionality
+$("#deleteTopic").click(function() {
+
+    var topicId = $("#topicId").val();
+    var userId = $("#userId").val();
+    var deleteTopic = true;
+
+    $.ajax({
+        url: "http://localhost/custom-cms/delete.php",
+        type: "post",
+        data: {deleteTopic : deleteTopic, topicId : topicId, userId : userId},
+        success: function() {
+
+            window.location.replace("http://localhost/custom-cms/");
+        }
+    })
+});
+
 //Update comment functionality
 $("#editComment").click(function() {
 

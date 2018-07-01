@@ -49,7 +49,7 @@
                             <a href="<?php echo BASE_URI; ?>create.php" class="btn btn-info">New Topic</a>
                         </li>
                         <li class="nav-item">
-                            <a href="<?php echo BASE_URI; ?>register.php" class="btn btn-warning">Logout</a>
+                            <button data-toggle="modal" data-target="#logoutModal" role="button" class="btn btn-warning">Logout</button>
                         </li>
 
                     <?php else : ?>

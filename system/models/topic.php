@@ -82,8 +82,8 @@
             return $username;
         }
 
-        public function create_new_topic($data) {
-
+        public function create_new_topic($data) 
+        {
             //Insert Query
             $this->db->query("INSERT INTO topics (user_id, category_id, title, description) 
                             VALUES (:user_id, :category_id, :title, :description)");
@@ -103,8 +103,52 @@
 
         }
 
-        public function create_new_category($category) {
+        public function update_topic($data) 
+        {
+            //Update Query
+            $this->db->query("UPDATE topics
+                            SET category_id = :category_id,
+                                title = :title,
+                                description = :description
+                            WHERE id = :id AND user_id = :user_id");
 
+            //Bind Values
+            $this->db->bind(':id', $data['id']);
+            $this->db->bind(':user_id', $data['user_id']);
+            $this->db->bind(':category_id', $data['category_id']);
+            $this->db->bind(':title', $data['title']);
+            $this->db->bind(':description', $data['description']);
+
+            //Execute
+            if($this->db->execute()) {
+                return true;
+            } else {
+                return false;
+            }
+
+        }
+
+        public function delete_topic($data)
+        {
+            //Delete Query
+            $this->db->query("DELETE `topics` FROM `topics` 
+                            INNER JOIN comments ON comments.user_id = topics.user_id
+                            WHERE id = :id AND topics.user_id = :user_id");
+
+            //Bind Values
+            $this->db->bind(':id', $data['topic_id']);
+            $this->db->bind(':user_id', $data['user_id']);
+
+            //Execute
+            if($this->db->execute()) {
+                return $this->db->lastInsertId();
+            } else {
+                return false;
+            }
+        }
+
+        public function create_new_category($category) 
+        {
             //Insert Query
             $this->db->query("INSERT INTO categories (category_name) VALUES (:category)");
 

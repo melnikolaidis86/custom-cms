@@ -28,10 +28,18 @@
                         <p>Posted on: <strong class="ml-3 text-warning"><?php echo formatDate($topic->created_at); ?></strong></p>
                         <p>Category: <a href="<?php echo BASE_URI; ?>?category=<?php echo $topic->category_id; ?>" class="ml-3 text-warning"><?php echo $topic->category_name; ?></a></p>
                         <p>Comments<span class="badge badge-warning text-white ml-3"><?php echo count_comments($topic->id); ?></span></p>
+
+                        <?php if(isset($_SESSION['user_id']) && $topic->user_id == $_SESSION['user_id']) : ?>
+
                         <div class="editButtons">
                             <a class="btn btn-info text-white mt-2" href="<?php echo BASE_URI . 'edit.php?id=' . $topic->id; ?>" role="button">Edit</a>
                             <a class="btn btn-danger text-white mt-2" data-toggle="modal" data-target="#deleteTopicModal" role="button">Delete</a>
+                            <input type="hidden" id="topicId" value="<?php echo $topic->id; ?>">
+                            <input type="hidden" id="userId" value="<?php echo $topic->user_id; ?>">
                         </div>
+
+                        <?php endif; ?>
+
                     </div>
                 </div>
             </div>
@@ -56,9 +64,14 @@
                 </div>
                 <div class="card-img-right flex-auto d-none px-2 d-md-block bg-light" style="width: 120px; height: 250px;">
                     <img src="./assets/img/faces/<?php echo $comment->image; ?>" class="img-circle img-no-padding img-responsive" alt="Rounded Image">
+
+                    <?php if(isset($_SESSION['user_id']) && $comment->user_id == $_SESSION['user_id']) : ?>
+
                     <a class="btn btn-warning text-white d-block mt-2" data-toggle="modal" data-target="#editModal" role="button">Edit</a>
                     <a class="btn btn-danger text-white d-block mt-2" data-toggle="modal" data-target="#deleteModal" role="button">Delete</a>
                     <input type="hidden" id="commentId" value="<?php echo $comment->comment_id; ?>">
+
+                    <?php endif; ?>
                 </div>
             </div>  
 

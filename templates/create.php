@@ -24,7 +24,7 @@
                     <div class="form-group">
                       <label for="selectCategory">Category</label>
                       <select class="form-control" name="category" id="selectCategory">
-                        <option value="">Choose Category</option>
+                        <option value="" disabled>Choose Category</option>
                         <option value="newCategory">New Category</option>
 
                         <?php if(get_all_categories()) : ?>

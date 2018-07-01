@@ -24,7 +24,7 @@
                     <div class="form-group">
                       <label for="selectCategory">Category</label>
                       <select class="form-control" name="category" id="selectCategory">
-                        <option value="">Choose Category</option>
+                        <option value="" disabled>Choose Category</option>
                         <option value="newCategory">New Category</option>
 
                         <?php if(get_all_categories()) : ?>
@@ -46,6 +46,7 @@
                     <label for="">Topic</label>
                     <textarea class="form-control" name="topic" id="ckEditor" rows="10" cols="80"><?php echo $topic->description; ?></textarea>
                     <input type="hidden" name="topic_id" value="<?php echo $topic->id; ?>">
+                    <input type="hidden" name="user_id" value="<?php echo $topic->user_id; ?>">
                 </div>
                 <div class="form-group">
                     <button type="submit" name="editTopic" class="btn btn-outline-info my-3 d-block ml-auto">Edit your topic</button>

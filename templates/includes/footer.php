@@ -39,6 +39,56 @@
 
 <!-- Modal Bodies come here -->
 
+<!-- Logout Modal -->
+<div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="logoutModal" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center">Logout</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Are you sure you want to logout?
+            </div>
+            <div class="modal-footer">
+                <div class="left-side">
+                    <button type="button" class="btn btn-default btn-link" data-dismiss="modal">No</button>
+                </div>
+                <div class="divider"></div>
+                <div class="right-side">
+                    <button type="button" id="logout" class="btn btn-danger btn-link">Yes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Topic Modal -->
+<div class="modal fade" id="deleteTopicModal" tabindex="-1" role="dialog" aria-labelledby="deleteTopicModal" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center">Delete Topic</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Are you sure you want to delete this topic?
+            </div>
+            <div class="modal-footer">
+                <div class="left-side">
+                    <button type="button" class="btn btn-default btn-link" data-dismiss="modal">No</button>
+                </div>
+                <div class="divider"></div>
+                <div class="right-side">
+                    <button type="button" id="deleteTopic" class="btn btn-danger btn-link">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Edit Comment Modal -->
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true" style="display: none;">
     <div class="modal-dialog" role="document">
@@ -92,7 +142,6 @@
     </div>
 </div>
 
-<!--   end modal -->
 
 
 </body>
