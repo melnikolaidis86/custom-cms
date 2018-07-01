@@ -7,7 +7,7 @@
     require_once './system/models/topic.php';
 
     //Checking if user is logged in
-    if(!isset($_POST['user_id']))  {
+    if(!isset($_SESSION['user_id']))  {
 
         redirect(BASE_URI);
     } else {

@@ -10,7 +10,7 @@
     $topic = new Topic();
 
     //Init template class
-    $template = new Template('./templates/topic.php');
+    $template = new Template('./templates/edit.php');
 
     //Set template variables
     $template->title = 'SAE FORUM';
@@ -20,7 +20,6 @@
         $topic_id = $_GET['id'];
 
         $template->topic = $topic->get_topic($topic_id);
-        $template->comments = $topic->get_topic_comments($topic_id);
 
     } else {
 

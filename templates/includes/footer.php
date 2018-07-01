@@ -39,6 +39,59 @@
 
 <!-- Modal Bodies come here -->
 
+<!-- Edit Comment Modal -->
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-labelledby="editModal" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center">Edit this comment?</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div class="form-group w-100">
+                    <textarea class="form-control" id="commentText" name="commentText" rows="10" cols="20"><?php echo $comment->text; ?></textarea>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <div class="left-side">
+                    <button type="button" class="btn btn-default btn-link" data-dismiss="modal">No</button>
+                </div>
+                <div class="divider"></div>
+                <div class="right-side">
+                    <button type="button" id="editComment" class="btn btn-danger btn-link">Edit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Comment Modal -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="deleteModal" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title text-center" id="exampleModalLabel">Delete Comment</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">Are you sure you want to delete this comment?
+            </div>
+            <div class="modal-footer">
+                <div class="left-side">
+                    <button type="button" class="btn btn-default btn-link" data-dismiss="modal">No</button>
+                </div>
+                <div class="divider"></div>
+                <div class="right-side">
+                    <button type="button" id="deleteComment" class="btn btn-danger btn-link">Delete</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!--   end modal -->
 
 
