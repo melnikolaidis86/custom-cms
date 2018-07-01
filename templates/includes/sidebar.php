@@ -10,14 +10,11 @@
     </div>
 
     <div class="p-3 d-none d-md-block">
-        <h4 class="font-italic mb-3 bg-light py-3 text-center">Archives</h4>
+        <h4 class="font-italic mb-3 bg-light py-3 text-center">Popular Users</h4>
         <ol class="list-group list-group-flush mb-0">
-            <li class="list-group-item"><a href="#">March 2014</a></li>
-            <li class="list-group-item"><a href="#">February 2014</a></li>
-            <li class="list-group-item"><a href="#">January 2014</a></li>
-            <li class="list-group-item"><a href="#">December 2013</a></li>
-            <li class="list-group-item"><a href="#">November 2013</a></li>
-            <li class="list-group-item"><a href="#">October 2013</a></li>
+            <?php foreach(get_popular_users() as $user) : ?>
+                <li class="list-group-item"><a href="<?php echo BASE_URI; ?>?category=<?php echo urlencode($user->full_name); ?>"><?php echo $user->full_name; ?><span class="ml-3 badge badge-info"><?php echo $user->topics_count; ?></span></a></li>
+            <?php endforeach; ?>
         </ol>
     </div>
 

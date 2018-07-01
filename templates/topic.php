@@ -1,6 +1,6 @@
 <?php include './includes/header.php'; ?>
 
-<div style="background-image: url('./assets/img/daniel-olahh.jpg'); background-position: center; background-size: cover; height: 350px;">
+<div style="background-image: url('./assets/img/daniel-olahh.jpg'); background-position: center; background-size: cover; height: 250px;">
     <div class="filter"></div>
 
 </div>

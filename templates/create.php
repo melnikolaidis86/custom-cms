@@ -1,6 +1,6 @@
 <?php include './includes/header.php'; ?>
 
-<div style="background-image: url('./assets/img/daniel-olahh.jpg'); background-position: center; background-size: cover; height: 350px;">
+<div style="background-image: url('./assets/img/daniel-olahh.jpg'); background-position: center; background-size: cover; height: 250px;">
     <div class="filter"></div>
 
 </div>
@@ -24,7 +24,7 @@
                     <div class="form-group">
                       <label for="selectCategory">Category</label>
                       <select class="form-control" name="category" id="selectCategory">
-                        <option value="" disabled>Choose Category</option>
+                        <option>Choose Category</option>
                         <option value="newCategory">New Category</option>
 
                         <?php if(get_all_categories()) : ?>

@@ -8,7 +8,7 @@
                 <div class="card card-register">
                 <!-- div to display the error message and the error message type -->
                 <?php displayMessage(); ?>
-                    <h3 class="title">Register</h3>
+                    <h3 class="title text-dark">Register</h3>
                     <form enctype="multipart/form-data" method="post" action="<?php echo BASE_URI . 'register.php'; ?>" class="register-form">
 
                         <label>Full Name</label>
@@ -27,9 +27,9 @@
                         <input type="password" name="confirm_password" class="form-control" placeholder="Confirm Password">
 
                         <label>Upload Avatar</label>
-                        <input type="file" size="32" name="avatar" value="">
+                        <input type="file" name="avatar" value="">
 
-                        <button type="submit" name="register" class="btn btn-danger btn-block btn-round">Register</button>
+                        <button type="submit" name="register" class="btn btn-dark btn-block btn-round">Register</button>
                     </form>
                 </div>
             </div>

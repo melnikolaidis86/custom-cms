@@ -3,6 +3,7 @@
     class User extends Connection
 
     {
+        //Return user with user_id
         public function get_user($user_id) 
         {
             $this->db->query("SELECT * FROM users WHERE users.user_id = {$user_id}");
@@ -12,6 +13,7 @@
             return $user;
         }
 
+        //Return total topics count per user
         public function get_user_topics_count($user_id) 
         {
             $this->db->query("SELECT topics.id FROM users
@@ -24,6 +26,7 @@
 
         }
 
+        //Return total comments count per user
         public function get_user_comments_count($user_id) 
         {
             $this->db->query("SELECT comments.comment_id FROM users
@@ -54,9 +57,25 @@
     
         }
 
+        //Authentication method for log in
+        public function validate_user($recovery_hash) 
+        {
+            $this->db->query("SELECT users.password, users.user_id FROM users
+                            INNER JOIN password_recovery ON password_recovery.user_id = users.user_id
+                            WHERE password_recovery.recovery_hash = :recovery_hash");
+
+            //Bind Values
+            $this->db->bind(':recovery_hash', $recovery_hash);
+    
+            //Execute
+            $user = $this->db->single();
+
+            return $user;
+        }
+
         //Register method for new user registration
         public function register($data) {
-
+            
             //Insert Query
             $this->db->query("INSERT INTO users (full_name, username, email, password, image)
                                 VALUES (:full_name, :username, :email, :password, :image)");
@@ -77,6 +96,63 @@
 
         }
 
+        //Checking if is a valid user
+        public function check_if_valid_user_email($email) {
+
+            //Select Query
+            $this->db->query("SELECT users.email, users.user_id FROM users
+                                WHERE users.email = :email");
+
+            //Bind Values
+            $this->db->bind(':email', $email);
+    
+            //Execute
+            $user = $this->db->single();
+    
+            return $user;
+        }
+
+        //Saving verification code to database
+        public function register_recovery_hash($data) {
+
+            $this->db->query("INSERT INTO password_recovery (user_id, recovery_hash) 
+                                VALUES (:user_id, :recovery_hash)");
+
+            //Bind Values
+            $this->db->bind(':user_id', $data['user_id']);
+            $this->db->bind(':recovery_hash', $data['recovery_hash']);
+    
+            //Execute
+            $this->db->execute();
+        }
+
+        //Updating password for user
+        public function update_password($data) 
+        {
+            $this->db->query("UPDATE users
+                            SET password = :password
+                            WHERE user_id = :user_id");
+
+            //Bind Values
+            $this->db->bind(':user_id', $data['user_id']);
+            $this->db->bind(':password', password_hash($data['password'], PASSWORD_DEFAULT));
+    
+            //Execute
+            $this->db->execute();
+        }
+
+        public function clear_recovery_hash($data)
+        {
+            $this->db->query("DELETE FROM password_recovery
+                            WHERE user_id = :user_id");
+
+            //Bind Values
+            $this->db->bind(':user_id', $data['user_id']);
+    
+            //Execute
+            $this->db->execute();
+        }
+
         //Upload Avatar Method
         public function uploadAvatar()
         {
@@ -90,7 +166,7 @@
                     || ($_FILES['avatar']['type'] == 'image/pjpeg')
                     || ($_FILES['avatar']['type'] == 'image/x-png')
                     || ($_FILES['avatar']['type'] == 'image/png'))
-                    && ($_FILES['avatar']['size'] < 50000)
+                    && ($_FILES['avatar']['size'] < 150000)
                     && in_array($extension, $allowedExts)) {
 
                     if($_FILES['avatar']['error'] > 0) {

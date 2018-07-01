@@ -27,15 +27,19 @@
 
             if($validate->isValidEmail($data['email'])) {
 
+                //Checking if there is a user registered with the same e-mail 
+                if($user->check_if_valid_user_email($data['email'])) {
+
+                    redirect('./register.php', 'There is a user registerd with this e-mail address', 'error');
+                }
+
                 if($validate->passwordsMatch($data['password'], $data['confirm_password'])) {
 
                     //Upload Avatar image
-                    if($_POST['avatar']) {
-
-                        if($user->uploadAvatar()) {
+                    if($user->uploadAvatar()) {
+                        
                             $data['avatar'] = $_FILES['avatar']['name'];
-                        }
-                    } else {
+                        } else {
 
                         $data['avatar'] = 'placeholder.jpg';
                     }
@@ -66,6 +70,7 @@
 
     //Set template variables
     $template->title = 'REGISTER';
+    $template->no_navigation = true;
 
     //Displaying template
     echo $template;

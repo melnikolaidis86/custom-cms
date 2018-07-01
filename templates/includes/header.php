@@ -24,7 +24,12 @@
 </head>
 <body>
 
-	<nav class="navbar navbar-expand-md fixed-top navbar-default bg-dark">
+    <?php if(isset($no_navigation) && $no_navigation == true)   : ?>
+
+
+    <?php else : ?>
+
+    <nav class="navbar navbar-expand-md fixed-top navbar-default bg-dark">
         <div class="container">
             <div class="navbar-translate">
                 <a class="navbar-brand text-warning" href="<?php echo BASE_URI; ?>">SAE Forum</a>
@@ -67,5 +72,8 @@
             </div>
         </div>
     </nav>
+
+    <?php endif; ?>
+
     
     <div class="wrapper">

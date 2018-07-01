@@ -14,6 +14,7 @@
 
     //Set template variables
     $template->title = 'LOG IN';
+    $template->no_navigation = true;
 
     //Authentication user and allow login if authentication is successful
     if(isset($_POST['log_in'])) {

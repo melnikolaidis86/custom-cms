@@ -8,17 +8,17 @@
                     <div class="card card-register">
                         <!-- div to display the error message and the error message type -->
                         <?php displayMessage(); ?>
-                        <h3 class="title">Welcome</h3>
+                        <h3 class="title text-dark">Welcome</h3>
                         <form class="register-form" method="post" action="<?php echo BASE_URI . 'login.php'; ?>">
                             <label>Email</label>
                             <input type="email" name="email" class="form-control" placeholder="Email">
 
                             <label>Password</label>
                             <input type="password" name="password" class="form-control" placeholder="Password">
-                            <button type="submit" name="log_in" class="btn btn-danger btn-block btn-round">Log in</button>
+                            <button type="submit" name="log_in" class="btn btn-dark btn-block btn-round">Log in</button>
                         </form>
                         <div class="forgot">
-                            <a href="#" class="btn btn-link btn-danger">Forgot password?</a>
+                            <a href="<?php echo BASE_URI . 'recover.php'; ?>" class="btn btn-link btn-danger">Forgot password?</a>
                         </div>
                         <div class="forgot">
                             <a href="<?php echo BASE_URI . 'register.php'; ?>" class="btn btn-link btn-dark">Not a member? Register</a>
