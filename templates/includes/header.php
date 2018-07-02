@@ -45,7 +45,7 @@
                         <a href="<?php echo BASE_URI; ?>" class="nav-link"><i class="nc-icon nc-paper"></i>  Topics</a>
                     </li>
                     <li class="nav-item">
-                        <a href="../documentation/tutorial-components.html" target="_blank" class="nav-link"><i class="nc-icon nc-zoom-split" aria-hidden="true"></i>  Search...</a>
+                        <a data-toggle="modal" data-target="#searchModal" class="nav-link"><i class="nc-icon nc-zoom-split"></i>  Search...</a>
                     </li>
 
                     <?php if(isset($_SESSION['user_id'])) : ?>

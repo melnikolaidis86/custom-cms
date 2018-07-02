@@ -4,19 +4,19 @@
                 <nav class="footer-nav">
                     <ul>
                         <li>
-                            <a rel="tooltip" class="text-warning" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/CreativeTim" target="_blank">
+                            <a rel="tooltip" class="text-warning" title="Follow us on Twitter" data-placement="bottom" href="https://twitter.com/saeathens?lang=el" target="_blank">
                                 <i class="fa fa-twitter"></i>
                                 <p class="d-lg-none">Twitter</p>
                             </a>
                         </li>
                         <li>
-                            <a rel="tooltip" class="text-warning" title="Like us on Facebook" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
+                            <a rel="tooltip" class="text-warning" title="Like us on Facebook" data-placement="bottom" href="https://www.facebook.com/SAEATHENS/" target="_blank">
                                 <i class="fa fa-facebook-square"></i>
                                 <p class="d-lg-none">Facebook</p>
                             </a>
                         </li>
                         <li>
-                            <a rel="tooltip" class="text-warning" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/CreativeTimOfficial" target="_blank">
+                            <a rel="tooltip" class="text-warning" title="Follow us on Instagram" data-placement="bottom" href="https://www.instagram.com/sae_athens/?hl=el" target="_blank">
                                 <i class="fa fa-instagram"></i>
                                 <p class="d-lg-none">Instagram</p>
                             </a>
@@ -25,7 +25,7 @@
                 </nav>
                 <div class="credits ml-auto">
                     <span class="copyright">
-                        &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> by Creative Tim
+                        &copy; <script>document.write(new Date().getFullYear())</script>, made with <i class="fa fa-heart heart"></i> Mel Nikolaidis
                     </span>
                 </div>
             </div>
@@ -60,6 +60,24 @@
                     <button type="button" id="logout" class="btn btn-danger btn-link">Yes</button>
                 </div>
             </div>
+        </div>
+    </div>
+</div>
+
+<!-- Search Modal -->
+<div class="modal fade" id="searchModal" tabindex="-1" role="dialog" aria-labelledby="searchModal" aria-hidden="true" style="display: none;">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+                <div class="form-group">
+                  <label for="">Search for a topic</label>
+                  <input type="text" class="form-control" id="search-query" aria-describedby="helpId" placeholder="Search...">
+                </div>
+            </div>
+            <div id="search-result" class="modal-body"></div>
         </div>
     </div>
 </div>

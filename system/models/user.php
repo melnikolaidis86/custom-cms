@@ -116,7 +116,8 @@
         public function register_recovery_hash($data) {
 
             $this->db->query("INSERT INTO password_recovery (user_id, recovery_hash) 
-                                VALUES (:user_id, :recovery_hash)");
+                                VALUES (:user_id, :recovery_hash)
+                                ON DUPLICATE KEY UPDATE user_id = :user_id, recovery_hash = :recovery_hash");
 
             //Bind Values
             $this->db->bind(':user_id', $data['user_id']);
@@ -141,6 +142,7 @@
             $this->db->execute();
         }
 
+        //Delete recovery_hash
         public function clear_recovery_hash($data)
         {
             $this->db->query("DELETE FROM password_recovery

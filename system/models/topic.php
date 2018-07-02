@@ -163,4 +163,26 @@
             }
         } 
 
+        public function search_for_posts($search)
+        {
+             //Select query
+             $this->db->query("SELECT topics.id, topics.title, categories.category_name from topics 
+                        INNER JOIN categories on topics.category_id = categories.category_id
+                        WHERE topics.title LIKE :search
+                        GROUP BY topics.title
+                        ORDER By topics.title DESC");
+
+             //Wildcard string
+             $wildcard = "%$search%";
+
+             //Bind Values
+             $this->db->bind(':search', $wildcard);
+
+             //Execute
+             $result = $this->db->resultset();
+
+             return $result;
+
+        }
+
     }

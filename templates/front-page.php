@@ -8,12 +8,14 @@
 <main role="main" class="container">
     <div class="row">
         <div class="col-md-8 blog-main">
+
         <h3 class="mb-3 font-italic bg-light py-3 text-center">
             <?php echo $page_title; ?>
         </h3>
 
         <hr>
 
+        <?php displayMessage(); ?>
 
         <?php if($topics) : ?>
 

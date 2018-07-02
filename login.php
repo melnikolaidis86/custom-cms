@@ -25,7 +25,7 @@
 
             $_SESSION['user_id'] = $user_id;
 
-            redirect(BASE_URI);
+            redirect(BASE_URI, 'You are now log in!');
         } else {
 
             redirect(BASE_URI . 'login.php', 'Username or password does not belong to valid user. Please check your credentials' , 'error');
